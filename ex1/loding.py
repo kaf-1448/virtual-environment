@@ -36,6 +36,15 @@ def main() -> None:
             random_nums, columns=['Matrix_Data'])
 
         print("Generating visualization...")
+        modules["matplotlib"].pyplot.plot(
+            md['Matrix_Data'], color='purple', marker='o')
+
+        modules["matplotlib"].pyplot.title("Matrix Numbers")
+        modules["matplotlib"].pyplot.savefig(
+            'matrix_analysis.png', dpi=300, bbox_inches='tight')
+
+        print("Analysis complete!")
+        print("Results saved to: matrix_analysis.png")
 
     except KeyError as e:
         print(e)
