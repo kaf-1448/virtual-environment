@@ -28,7 +28,7 @@ def main() -> None:
                 print("poetry install")
                 print("poetry run python loading.py")
 
-        print("Analyzing Matrix data...")
+        print("\nAnalyzing Matrix data...")
         random_nums = modules["numpy"].random.randint(1, 101, size=1000)
 
         print("Processing 1000 data points...")
@@ -36,14 +36,14 @@ def main() -> None:
             random_nums, columns=['Matrix_Data'])
 
         print("Generating visualization...")
-        modules["matplotlib"].pyplot.plot(
-            md['Matrix_Data'], color='purple', marker='o')
 
-        modules["matplotlib"].pyplot.title("Matrix Numbers")
-        modules["matplotlib"].pyplot.savefig(
-            'matrix_analysis.png', dpi=300, bbox_inches='tight')
+        plt = importlib.import_module("matplotlib.pyplot")
+        plt.plot(md['Matrix_Data'])
+        plt.title("Matrix Numbers")
+        plt.savefig("matrix_analysis.png")
+        plt.close()
 
-        print("Analysis complete!")
+        print("\nAnalysis complete!")
         print("Results saved to: matrix_analysis.png")
 
     except KeyError as e:
